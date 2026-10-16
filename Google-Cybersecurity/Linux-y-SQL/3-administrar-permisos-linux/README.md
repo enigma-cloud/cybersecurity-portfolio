@@ -18,8 +18,6 @@ As a security analyst, configuring proper access permissions is essential to pro
 4. **Change directory permissions**: used `chmod g-x drafts` to remove execute access for the group on the `drafts` directory.
 
 ## Key commands
-
-```bash
 cd projects
 ls -l
 ls -la
@@ -27,3 +25,13 @@ chmod o-w project_k.txt
 chmod g-r project_m.txt
 chmod u-w,g-w,g+r .project_x.txt
 chmod g-x drafts
+
+Key concepts
+Authorization: granting access to specific resources in a system.
+File permissions: read (r), write (w), and execute (x) permissions granted to the user, group, and others.
+Permission string: the 10-character string at the start of each entry; the first character indicates the file type (d for directory, - for regular file).
+chmod: changes permissions on files and directories. u sets user permissions, g group permissions, and o others' permissions.
+Hidden files: files starting with a dot (.) that require ls -la to be displayed.
+Tools
+Linux Bash shell
+Commands: cd, ls, chmod
