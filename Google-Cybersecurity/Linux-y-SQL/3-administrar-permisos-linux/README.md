@@ -26,12 +26,49 @@ chmod g-r project_m.txt
 chmod u-w,g-w,g+r .project_x.txt
 chmod g-x drafts
 
-Key concepts
+## Key concepts
 Authorization: granting access to specific resources in a system.
 File permissions: read (r), write (w), and execute (x) permissions granted to the user, group, and others.
 Permission string: the 10-character string at the start of each entry; the first character indicates the file type (d for directory, - for regular file).
 chmod: changes permissions on files and directories. u sets user permissions, g group permissions, and o others' permissions.
 Hidden files: files starting with a dot (.) that require ls -la to be displayed.
-Tools
+
+## Tools
 Linux Bash shell
 Commands: cd, ls, chmod
+
+==================
+
+## Linux: Administrar Permisos de Archivos
+Actividad sobre la administración de permisos de archivos y directorios en Linux para controlar el acceso y fortalecer la seguridad del sistema.
+
+## Descripción
+Examen y administración de los permisos de los archivos del directorio projects para el usuario researcher2, quien pertenece al grupo research_team. Se verificaron los permisos de todos los archivos, incluidos los ocultos, y se ajustaron según el grado de autorización requerido.
+
+## Escenario
+Como analista de seguridad, configurar permisos de acceso adecuados es fundamental para proteger información sensible y mantener la seguridad general del sistema. El usuario researcher2 necesitaba verificar que los permisos de los archivos del directorio projects coincidieran con el nivel de autorización previsto, y modificarlos donde fuera necesario para eliminar accesos no autorizados.
+
+## Tareas realizadas
+Verificar los detalles de archivos y directorios: usé ls -l y ls -la para listar el contenido y los permisos del directorio projects, incluidos los archivos ocultos.
+Cambiar permisos de archivos: usé chmod o-w project_k.txt para quitar el permiso de escritura a otros usuarios, y chmod g-r project_m.txt para quitar el permiso de lectura al grupo.
+Cambiar permisos de un archivo oculto: usé chmod u-w,g-w,g+r .project_x.txt para que tanto el usuario como el grupo pudieran leer, pero no escribir, el archivo oculto.
+Cambiar permisos de un directorio: usé chmod g-x drafts para quitar el permiso de ejecución del grupo sobre el directorio drafts.
+
+## Comandos clave
+cd projects
+ls -l
+ls -la
+chmod o-w project_k.txt
+chmod g-r project_m.txt
+chmod u-w,g-w,g+r .project_x.txt
+chmod g-x drafts
+
+## Conceptos clave
+Autorización: otorgar acceso a recursos específicos de un sistema.
+Permisos de archivos: permisos de lectura (r), escritura (w) y ejecución (x) otorgados al usuario, al grupo y a otros.
+Cadena de permisos: la cadena de 10 caracteres que encabeza cada entrada; el primer carácter indica el tipo de archivo (d para directorio, - para archivo común).
+chmod: cambia los permisos de archivos y directorios. u establece los permisos del usuario, g los del grupo y o los de otros.
+Archivos ocultos: archivos que comienzan con un punto (.) y que requieren ls -la para mostrarse.
+## Herramientas
+Shell Bash de Linux
+Comandos: cd, ls, chmod
