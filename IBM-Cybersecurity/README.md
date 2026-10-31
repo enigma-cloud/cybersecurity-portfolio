@@ -1,5 +1,4 @@
 
-## English
 
 ### Objective
 Learn to configure and verify strong password policies in Windows using the
@@ -39,7 +38,6 @@ in operating system security.
 
 # Laboratorio: Políticas de contraseña seguras en Windows
 
-## Español
 
 ### Objetivo
 Aprender a configurar y verificar políticas de contraseña seguras en Windows
