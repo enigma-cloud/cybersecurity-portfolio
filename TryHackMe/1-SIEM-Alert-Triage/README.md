@@ -117,3 +117,14 @@ Laboratorio práctico de la sala **TryHackMe SIEM** centrado en el **triaje de a
 - Indicadores de Compromiso (IoC): dominio, hash de archivo, ruta de archivo
 - Mapeo a MITRE ATT&CK (ver abajo)
 
+
+
+### Mapeo a MITRE ATT&CK
+| Alerta | Técnica |
+|---|---|
+| Brute Force Attack from External | T1110 — Brute Force |
+| Unusual VPN Login Location | T1078 — Valid Accounts |
+| Potential Data Exfiltration | T1041 — Exfiltration Over C2 Channel |
+| Download from GitHub Repository | T1105 — Ingress Tool Transfer |
+| Double-Extension File Creation | T1204.002 — User Execution: Malicious File |
+
