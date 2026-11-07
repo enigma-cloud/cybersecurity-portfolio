@@ -20,17 +20,7 @@ Practical lab from the **TryHackMe SIEM** room focused on **alert triage** insid
 
 ### Alerts Investigated
 
-#### 1. Brute Force Attack from External — Medium — True Positive
-- **Assignee:** J.Adams (L2)
-- **Verdict:** True Positive
-- **Reasoning:** Repeated failed authentication attempts from an external source, consistent with a brute-force pattern.
-
-#### 2. Unusual VPN Login Location — Medium — False Positive
-- **Assignee:** T.Ross (L1)
-- **Verdict:** False Positive
-- **Reasoning:** Login from an unusual location, later confirmed as legitimate user activity (travel/remote work).
-
-#### 3. Potential Data Exfiltration — Critical — False Positive
+#### 1. Potential Data Exfiltration — Critical — False Positive
 - **Destination:** `*.zoom.us`
 - **Source IP:** `192.168.45.66`
 - **Source Network:** `UK04/MEETINGROOM`
@@ -39,7 +29,7 @@ Practical lab from the **TryHackMe SIEM** room focused on **alert triage** insid
 - **Verdict:** False Positive
 - **Reasoning:** The rule triggers on volume (5+ GB sent to a single destination in a day). However, the destination is a legitimate video-conferencing platform, the source network is a meeting room, and the traffic is symmetric (5.8 GB sent / 5.2 GB received), which is consistent with a long video call rather than data exfiltration. Exfiltration typically shows asymmetric traffic (large outbound, minimal inbound).
 
-#### 4. Download from GitHub Repository — Low — False Positive
+#### 2. Download from GitHub Repository — Low — False Positive
 - **Accessed URL:** `https://github.com/facebook/react`
 - **Source User:** G.Chandler
 - **Source Host:** LPT-IT-063
@@ -47,7 +37,7 @@ Practical lab from the **TryHackMe SIEM** room focused on **alert triage** insid
 - **Verdict:** False Positive
 - **Reasoning:** The rule triggers on any download from GitHub, since the platform hosts both legitimate projects and malicious scripts. In this case, the download came from the official React repository by an IT/developer user on the developers' VPN segment — fully consistent with the user's role.
 
-#### 5. Double-Extension File Creation — High — True Positive
+#### 3. Double-Extension File Creation — High — True Positive
 - **Host:** LPT-HR-009
 - **Process Name:** `chrome.exe`
 - **Process User:** S.Conway
@@ -56,13 +46,6 @@ Practical lab from the **TryHackMe SIEM** room focused on **alert triage** insid
 - **File MD5:** `14d8486f3f63875ef93cfd240c5dc10b`
 - **Verdict:** True Positive
 - **Reasoning:** Double-extension file (`.mp4.exe`) used to disguise an executable as a video file. Windows hides known extensions by default, so the user sees "cats2025.mp4" while actually executing a binary. The origin domain (`freecatvideoshd.monster`) shows a typical malware-distribution pattern (cheap TLD, "free"/"hd" bait words). The download was performed through `chrome.exe`, consistent with a phishing vector. The affected host belongs to HR, a high-value target. Recommended action: escalate to L2 for binary analysis and domain blocking.
-
-### Key Takeaways
-- **Severity ≠ maliciousness.** A Critical alert means "this deserves investigation", not "this is an attack".
-- **Context decides the verdict.** The same event can be a True Positive or False Positive depending on who, where, and what.
-- **Symmetric vs. asymmetric traffic** is a strong indicator: video calls are symmetric, exfiltration is asymmetric.
-- **Ambiguous rules exist.** Some rules detect a *condition* (any GitHub download, any large transfer), not malicious behavior. The analyst provides the context.
-- **No benign explanation = True Positive.** If you have to force the benign explanation, it probably isn't benign.
 
 ### Tools & Concepts
 - SIEM alert triage
@@ -100,17 +83,7 @@ Laboratorio práctico de la sala **TryHackMe SIEM** centrado en el **triaje de a
 
 ### Alertas investigadas
 
-#### 1. Brute Force Attack from External — Medium — Verdadero Positivo
-- **Asignado a:** J.Adams (L2)
-- **Veredicto:** Verdadero Positivo
-- **Razonamiento:** Intentos repetidos de autenticación fallida desde una fuente externa, consistente con un patrón de fuerza bruta.
-
-#### 2. Unusual VPN Login Location — Medium — Falso Positivo
-- **Asignado a:** T.Ross (L1)
-- **Veredicto:** Falso Positivo
-- **Razonamiento:** Inicio de sesión desde una ubicación inusual, confirmado posteriormente como actividad legítima del usuario (viaje/trabajo remoto).
-
-#### 3. Potential Data Exfiltration — Critical — Falso Positivo
+#### 1. Potential Data Exfiltration — Critical — Falso Positivo
 - **Destino:** `*.zoom.us`
 - **IP origen:** `192.168.45.66`
 - **Red origen:** `UK04/MEETINGROOM`
@@ -119,7 +92,7 @@ Laboratorio práctico de la sala **TryHackMe SIEM** centrado en el **triaje de a
 - **Veredicto:** Falso Positivo
 - **Razonamiento:** La regla se dispara por volumen (5+ GB enviados a un solo destino en un día). Sin embargo, el destino es una plataforma legítima de videoconferencia, la red de origen es una sala de reuniones y el tráfico es simétrico (5.8 GB enviados / 5.2 GB recibidos), lo cual es consistente con una videollamada larga y no con exfiltración de datos. La exfiltración suele mostrar tráfico asimétrico (mucho saliente, poco entrante).
 
-#### 4. Download from GitHub Repository — Low — Falso Positivo
+#### 2. Download from GitHub Repository — Low — Falso Positivo
 - **URL accedida:** `https://github.com/facebook/react`
 - **Usuario origen:** G.Chandler
 - **Host origen:** LPT-IT-063
@@ -127,7 +100,7 @@ Laboratorio práctico de la sala **TryHackMe SIEM** centrado en el **triaje de a
 - **Veredicto:** Falso Positivo
 - **Razonamiento:** La regla se dispara ante cualquier descarga desde GitHub, ya que la plataforma aloja tanto proyectos legítimos como scripts maliciosos. En este caso, la descarga provino del repositorio oficial de React por un usuario de IT/desarrollo en el segmento VPN de desarrolladores — totalmente consistente con su rol.
 
-#### 5. Double-Extension File Creation — High — Verdadero Positivo
+#### 3. Double-Extension File Creation — High — Verdadero Positivo
 - **Host:** LPT-HR-009
 - **Nombre del proceso:** `chrome.exe`
 - **Usuario del proceso:** S.Conway
@@ -137,12 +110,6 @@ Laboratorio práctico de la sala **TryHackMe SIEM** centrado en el **triaje de a
 - **Veredicto:** Verdadero Positivo
 - **Razonamiento:** Archivo con doble extensión (`.mp4.exe`) usado para disfrazar un ejecutable como archivo de video. Windows oculta las extensiones conocidas por defecto, así que el usuario ve "cats2025.mp4" mientras en realidad ejecuta un binario. El dominio de origen (`freecatvideoshd.monster`) muestra un patrón típico de distribución de malware (TLD barato, palabras gancho "free"/"hd"). La descarga se realizó mediante `chrome.exe`, consistente con un vector de phishing. El host afectado pertenece a RRHH, un objetivo de alto valor. Acción recomendada: escalar a L2 para análisis del binario y bloqueo del dominio.
 
-### Conclusiones clave
-- **Severidad ≠ malicia.** Una alerta Crítica significa "esto merece investigación", no "esto es un ataque".
-- **El contexto decide el veredicto.** El mismo evento puede ser Verdadero o Falso Positivo según quién, dónde y qué.
-- **Tráfico simétrico vs. asimétrico** es un indicador fuerte: las videollamadas son simétricas, la exfiltración es asimétrica.
-- **Existen reglas ambiguas.** Algunas reglas detectan una *condición* (cualquier descarga de GitHub, cualquier transferencia grande), no comportamiento malicioso. El analista aporta el contexto.
-- **Sin explicación benigna = Verdadero Positivo.** Si tienes que forzar la explicación benigna, probablemente no lo es.
 
 ### Herramientas y conceptos
 - Triaje de alertas en SIEM
