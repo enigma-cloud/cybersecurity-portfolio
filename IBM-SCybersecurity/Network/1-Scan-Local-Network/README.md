@@ -123,15 +123,6 @@ A trusted contact on a **different network** opened `http://<public-IP>` in a br
 
 ---
 
-## Remediation applied
-
-- Administrative password on the ONU changed from the factory default.
-- Wi-Fi (WPA) key changed from the factory default.
-
-Both actions were performed from the local management panel at `http://192.168.101.1`.
-
----
-
 ## Recommendations
 
 1. Enable HTTPS on the management panel if the firmware supports it.
@@ -162,10 +153,6 @@ Both actions were performed from the local management panel at `http://192.168.1
 ---
 
 # Escaneo de Red — Red Local
-
-**Diana Esmeralda Cárdenas Duarte** · Noviembre 2026
-
----
 
 ## Descripción general
 
@@ -289,14 +276,7 @@ Un contacto de confianza en una **red distinta** abrió `http://<IP-pública>` e
 | Sin forzar HTTPS en el panel | 80 | Solo local | Medio |
 | Servicio WSD | 5357 | Solo local | Bajo |
 
----
 
-## Remediación aplicada
-
-- Contraseña de administrador de la ONU cambiada respecto a la de fábrica.
-- Clave del Wi-Fi (WPA) cambiada respecto a la de fábrica.
-
-Ambas acciones se realizaron desde el panel local en `http://192.168.101.1`.
 
 ---
 
