@@ -1,8 +1,3 @@
-# Network Scan — Local Network
-
-**Diana Esmeralda Cárdenas Duarte** · November 2026
-
----
 
 ## Overview
 
